@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up | AeroVista Airlines</title>
+    <link rel="stylesheet" type="text/css" href="./styles.css">
+    <link rel="stylesheet" type="text/css" href="./auth.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="auth-page light-surface">
+    <header class="auth-header">
+        <a class="auth-brand" href="index.html">
+            <svg class="auth-logo" viewBox="0 0 200 180" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <defs>
+                    <linearGradient id="authLogoFillSignup" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#e0f2ff" />
+                        <stop offset="50%" stop-color="#dbeafe" />
+                        <stop offset="100%" stop-color="#ede9fe" />
+                    </linearGradient>
+                    <linearGradient id="authLogoStrokeSignup" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#3b82f6" />
+                        <stop offset="50%" stop-color="#8b5cf6" />
+                        <stop offset="100%" stop-color="#ec4899" />
+                    </linearGradient>
+                </defs>
+                <g fill="url(#authLogoFillSignup)" stroke="url(#authLogoStrokeSignup)" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+                    <polygon points="100 6 115 30 100 44 85 30" />
+                    <polygon points="88 32 112 32 124 74 108 112 92 112 76 74" />
+                    <polygon points="92 112 108 112 118 140 100 170 82 140" />
+                    <polygon points="10 46 84 32 66 68 16 72" />
+                    <polygon points="190 46 116 32 134 68 184 72" />
+                    <polygon points="66 68 84 38 92 68 74 96" />
+                    <polygon points="134 68 116 38 108 68 126 96" />
+                    <polygon points="50 86 64 64 70 92 56 108" />
+                    <polygon points="150 86 136 64 130 92 144 108" />
+                </g>
+            </svg>
+            <div>
+                <span class="brand-name">AeroVista Airlines</span>
+                <span class="brand-tagline">Experience better journeys</span>
+            </div>
+        </a>
+    </header>
+
+    <main class="auth-content">
+        <section class="auth-card" aria-labelledby="signupHeading">
+            <header>
+                <h1 id="signupHeading">Create Your Account</h1>
+                <p>Join millions of travelers and start planning unforgettable adventures with AeroVista.</p>
+            </header>
+
+            <form id="signupForm" class="auth-form" novalidate>
+                <div class="form-message" data-form-message role="alert"></div>
+
+                <div class="form-group">
+                    <label for="signupName">Full name</label>
+                    <input type="text" id="signupName" name="fullName" placeholder="Jane Doe" autocomplete="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="signupEmail">Email address</label>
+                    <input type="email" id="signupEmail" name="email" placeholder="you@example.com" autocomplete="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="signupPassword">Password</label>
+                    <div class="password-input-wrapper">
+                        <input type="password" id="signupPassword" name="password" placeholder="Create a password" autocomplete="new-password" required>
+                        <button type="button" class="password-toggle" aria-label="Toggle password visibility">
+                            <i class="fas fa-eye" id="signupPasswordToggle"></i>
+                        </button>
+                    </div>
+                    <div class="password-hints" data-password-hint>
+                        <span class="hint-pending">8+ characters</span>
+                        <span class="hint-pending">One uppercase</span>
+                        <span class="hint-pending">One lowercase</span>
+                        <span class="hint-pending">One number</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="signupConfirmPassword">Confirm password</label>
+                    <div class="password-input-wrapper">
+                        <input type="password" id="signupConfirmPassword" name="confirmPassword" placeholder="Re-enter your password" autocomplete="new-password" required>
+                        <button type="button" class="password-toggle" aria-label="Toggle password visibility">
+                            <i class="fas fa-eye" id="signupConfirmPasswordToggle"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="auth-actions">
+                    <label>
+                        <input type="checkbox" name="agreeTerms" required>
+                        I agree to the <a class="auth-link" href="#">terms &amp; privacy policy</a>
+                    </label>
+                </div>
+
+                <button type="submit" class="auth-submit">Create Account</button>
+            </form>
+
+            <p class="auth-switch">
+                Already have an account?
+                <a href="login.html">Log in instead</a>
+            </p>
+        </section>
+    </main>
+
+    <script src="./auth.js"></script>
+</body>
+</html>
+

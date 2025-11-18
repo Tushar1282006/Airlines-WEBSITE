@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Book your flights with ease - Best airline booking platform">
+    <title>AeroVista Airlines - Book Your Dream Flight</title>
+    <link rel="stylesheet" type="text/css" href="./styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <svg class="logo-icon" viewBox="0 0 200 180" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <defs>
+                            <linearGradient id="logoFillGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#e0f2ff" />
+                                <stop offset="50%" stop-color="#dbeafe" />
+                                <stop offset="100%" stop-color="#ede9fe" />
+                            </linearGradient>
+                            <linearGradient id="logoStrokeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#3b82f6" />
+                                <stop offset="50%" stop-color="#8b5cf6" />
+                                <stop offset="100%" stop-color="#ec4899" />
+                            </linearGradient>
+                        </defs>
+                        <g fill="url(#logoFillGradient)" stroke="url(#logoStrokeGradient)" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+                            <!-- Head -->
+                            <polygon points="100 6 115 30 100 44 85 30" />
+                            <!-- Torso -->
+                            <polygon points="88 32 112 32 124 74 108 112 92 112 76 74" />
+                            <!-- Tail fin -->
+                            <polygon points="92 112 108 112 118 140 100 170 82 140" />
+                            <!-- Left wing -->
+                            <polygon points="10 46 84 32 66 68 16 72" />
+                            <!-- Right wing -->
+                            <polygon points="190 46 116 32 134 68 184 72" />
+                            <!-- Inner left accent -->
+                            <polygon points="66 68 84 38 92 68 74 96" />
+                            <!-- Inner right accent -->
+                            <polygon points="134 68 116 38 108 68 126 96" />
+                            <!-- Lower left accent -->
+                            <polygon points="50 86 64 64 70 92 56 108" />
+                            <!-- Lower right accent -->
+                            <polygon points="150 86 136 64 130 92 144 108" />
+                        </g>
+                    </svg>
+                    <div class="logo-text-container">
+                        <span class="logo-name">AeroVista Airlines</span>
+                        <span class="logo-slogan">"Your Journey, Our Promise"</span>
+                    </div>
+                </div>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="#home" class="nav-link active">Home</a></li>
+                    <li><a href="#flights" class="nav-link">Flights</a></li>
+                    <li><a href="#deals" class="nav-link">Deals</a></li>
+                    <li><a href="#experience" class="nav-link">Experience</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <div class="theme-toggle-group">
+                        <button class="btn-theme-toggle" id="darkModeBtn" type="button" aria-label="Switch to dark mode">
+                            <i class="fas fa-moon"></i>
+                            <span>Dark</span>
+                        </button>
+                        <button class="btn-theme-toggle" id="lightModeBtn" type="button" aria-label="Switch to light mode">
+                            <i class="fas fa-sun"></i>
+                            <span>Light</span>
+                        </button>
+                    </div>
+                    <div class="auth-buttons" id="authButtons">
+                        <button class="btn-login" type="button">Login</button>
+                        <button class="btn-signup" type="button">Sign Up</button>
+                    </div>
+                    <div class="user-session" id="userSession" style="display: none;">
+                        <div class="user-greeting">
+                            <i class="fas fa-user-circle" aria-hidden="true"></i>
+                            <span id="userGreeting">Hi, Traveler</span>
+                        </div>
+                        <button class="btn-logout" id="logoutBtn" type="button">Logout</button>
+                    </div>
+                </div>
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-background">
+            <div class="clouds"></div>
+        </div>
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Fly to Your Dream Destination</h1>
+                <p class="hero-subtitle">Discover amazing places with the best flight deals</p>
+                
+                <!-- Flight Search Form -->
+                <div class="search-container">
+                    <div class="search-tabs">
+                        <button class="tab-btn active" data-tab="round-trip">
+                            <i class="fas fa-exchange-alt"></i> Round Trip
+                        </button>
+                        <button class="tab-btn" data-tab="one-way">
+                            <i class="fas fa-arrow-right"></i> One Way
+                        </button>
+                        <button class="tab-btn" data-tab="multi-city">
+                            <i class="fas fa-route"></i> Multi City
+                        </button>
+                    </div>
+                    
+                    <form class="search-form" id="searchForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label><i class="fas fa-plane-departure"></i> From</label>
+                                <input type="text" id="fromCity" placeholder="Departure city" required>
+                                <div class="suggestions" id="fromSuggestions"></div>
+                            </div>
+                            <button type="button" class="swap-btn" id="swapBtn">
+                                <i class="fas fa-exchange-alt"></i>
+                            </button>
+                            <div class="form-group">
+                                <label><i class="fas fa-plane-arrival"></i> To</label>
+                                <input type="text" id="toCity" placeholder="Destination city" required>
+                                <div class="suggestions" id="toSuggestions"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label><i class="fas fa-calendar-alt"></i> Departure</label>
+                                <input type="date" id="departureDate" required>
+                            </div>
+                            <div class="form-group" id="returnDateGroup">
+                                <label><i class="fas fa-calendar-check"></i> Return</label>
+                                <input type="date" id="returnDate">
+                            </div>
+                            <div class="form-group">
+                                <label><i class="fas fa-users"></i> Passengers</label>
+                                <div class="passenger-selector">
+                                    <button type="button" class="passenger-btn" id="passengerBtn">
+                                        <span id="passengerCount">1 Adult</span>
+                                        <i class="fas fa-chevron-down"></i>
+                                    </button>
+                                    <div class="passenger-dropdown" id="passengerDropdown">
+                                        <div class="passenger-item">
+                                            <span>Adults (12+)</span>
+                                            <div class="counter">
+                                                <button type="button" class="counter-btn" data-type="adult" data-action="decrease">-</button>
+                                                <span id="adultCount">1</span>
+                                                <button type="button" class="counter-btn" data-type="adult" data-action="increase">+</button>
+                                            </div>
+                                        </div>
+                                        <div class="passenger-item">
+                                            <span>Children (2-11)</span>
+                                            <div class="counter">
+                                                <button type="button" class="counter-btn" data-type="child" data-action="decrease">-</button>
+                                                <span id="childCount">0</span>
+                                                <button type="button" class="counter-btn" data-type="child" data-action="increase">+</button>
+                                            </div>
+                                        </div>
+                                        <div class="passenger-item">
+                                            <span>Infants (0-2)</span>
+                                            <div class="counter">
+                                                <button type="button" class="counter-btn" data-type="infant" data-action="decrease">-</button>
+                                                <span id="infantCount">0</span>
+                                                <button type="button" class="counter-btn" data-type="infant" data-action="increase">+</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label><i class="fas fa-suitcase"></i> Class</label>
+                                <select id="cabinClass">
+                                    <option value="economy">Economy</option>
+                                    <option value="premium">Premium Economy</option>
+                                    <option value="business">Business</option>
+                                    <option value="first">First Class</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="btn-search">
+                            <i class="fas fa-search"></i> Search Flights
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Safe & Secure</h3>
+                    <p>Your data and payments are protected with industry-leading security</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-tags"></i>
+                    </div>
+                    <h3>Best Prices</h3>
+                    <p>Compare prices from multiple airlines and get the best deals</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>24/7 Support</h3>
+                    <p>Our customer support team is available round the clock</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Easy Booking</h3>
+                    <p>Book your flight in just a few clicks with our intuitive interface</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3>Global Coverage</h3>
+                    <p>Access to over 500 destinations worldwide with our extensive network</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Mobile Friendly</h3>
+                    <p>Book and manage your flights on the go with our mobile-optimized platform</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Destinations -->
+    <section class="destinations" id="flights">
+        <div class="container">
+            <div class="section-header">
+                <h2>Popular Destinations</h2>
+                <p>Explore the world's most beautiful places</p>
+            </div>
+            <div class="destinations-grid" id="destinationsGrid">
+                <!-- Destinations will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Flight Results Modal -->
+    <div class="modal" id="resultsModal">
+        <div class="modal-content results-modal-content">
+            <button class="close-modal" id="closeModal" type="button" aria-label="Close flight results">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="results-modal-header">
+                <div class="results-modal-title">
+                    <span class="results-tag">Live availability</span>
+                    <h2>Available Flights</h2>
+                    <p class="results-meta" id="resultsMeta">Searching for the best fares...</p>
+                </div>
+                <div class="results-badges" id="resultsBadges"></div>
+            </div>
+            <div class="results-modal-body">
+                <div class="results-container" id="resultsContainer">
+                    <!-- Flight results will be populated here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Brand Story Modal -->
+    <div class="modal" id="brandModal" aria-hidden="true">
+        <div class="modal-content brand-modal-content">
+            <span class="close-modal" id="closeBrandModal" aria-label="Close brand story">&times;</span>
+            <div class="brand-modal-header">
+                <h2>AeroVista Airlines</h2>
+                <p class="brand-tagline">Your Journey, Our Promise since 2009</p>
+            </div>
+            <div class="brand-modal-scroll">
+                <div class="brand-modal-body">
+                    <div class="brand-section brand-metrics">
+                        <div class="metric-card">
+                            <span class="metric-value">10M+</span>
+                            <span class="metric-label">Annual Travelers</span>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-value">320</span>
+                            <span class="metric-label">Next-Gen Aircraft</span>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-value">500+</span>
+                            <span class="metric-label">Global Destinations</span>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-value">50+</span>
+                            <span class="metric-label">Alliance Partners</span>
+                        </div>
+                    </div>
+
+                <div class="brand-section">
+                    <h3>Origins and Purpose</h3>
+                    <p>AeroVista Airlines was founded in 2009 by a coalition of aviation veterans who believed long-haul travel could feel personal, sustainable, and tech-forward. Headquartered in Singapore with operational hubs in Doha, Munich, and Seattle, we started with eight city pairs and a promise: curate every journey as if we were traveling ourselves.</p>
+                </div>
+
+                <div class="brand-section">
+                    <h3>Milestones That Define Us</h3>
+                    <ul class="brand-timeline">
+                        <li><strong>2009:</strong> Commenced operations with the ultra-efficient Dreamliner fleet and 600 dedicated crew members.</li>
+                        <li><strong>2012:</strong> Launched the AeroSync platform delivering real-time itinerary management to every passenger.</li>
+                        <li><strong>2014:</strong> Debuted SkyLuxe™ suites, earning the Global Travel Innovation Award for reimagined premium cabins.</li>
+                        <li><strong>2017:</strong> Achieved carbon-neutral ground operations across all hubs through solar micro-grids and electric ground support equipment.</li>
+                        <li><strong>2019:</strong> Introduced SkyBridge cargo division to support humanitarian relief and med-logistics corridors.</li>
+                        <li><strong>2021:</strong> Ranked #1 in APAC for customer satisfaction after deploying proactive concierge AI that resolves 92% of queries before take-off.</li>
+                        <li><strong>2023:</strong> Expanded our network to 500+ global destinations with 50 partner airlines and seamless interline experiences.</li>
+                        <li><strong>Today:</strong> Trusted by 10M+ loyal flyers, operating 320 next-gen aircraft, and certified Platinum for safety and reliability by the International Air Transport Council.</li>
+                    </ul>
+                </div>
+
+                <div class="brand-section brand-grid">
+                    <div>
+                        <h3>What Sets AeroVista Apart</h3>
+                        <ul class="brand-highlights">
+                            <li><strong>Fleet:</strong> All aircraft equipped with biometric boarding, HEPA+ air filtration, and predictive maintenance systems.</li>
+                            <li><strong>Cabin Experience:</strong> SkyLuxe™ suites, Horizon Premium lounges, and interactive entertainment curated in 28 languages.</li>
+                            <li><strong>Service Culture:</strong> Crew training academy graduates 2,300 ambassadors annually, championing empathy-first hospitality.</li>
+                            <li><strong>Smart Operations:</strong> AI route optimization and continuous-descent approaches reduce fuel burn by 17% versus industry averages.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>Commitment to People & Planet</h3>
+                        <ul class="brand-highlights">
+                            <li><strong>Carbon Goals:</strong> Net-zero roadmap for 2040 featuring sustainable aviation fuel partnerships in five continents.</li>
+                            <li><strong>Community:</strong> AeroBridge Foundation has delivered 1200+ medical evacuation flights and STEM scholarships for 40,000 students.</li>
+                            <li><strong>Safety:</strong> 15 consecutive years with no major incident, audited quarterly by independent regulators.</li>
+                            <li><strong>Innovation:</strong> Partnered with NASA and Airbus to pilot hydrogen-hybrid demonstrators beginning 2026.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="brand-section">
+                    <h3>The Journey Ahead</h3>
+                    <p>We believe the future of aviation is immersive, sustainable, and deeply personal. From seamless biometric journeys to personalized inflight wellness programs and real-time language assistance, every initiative is designed to keep you exploring the world with confidence.</p>
+                    <p>Thank you for being part of the AeroVista story—your trust fuels our next horizon.</p>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Special Deals -->
+    <section class="deals" id="deals">
+        <div class="container">
+            <div class="section-header">
+                <h2>Special Deals</h2>
+                <p>Limited time offers you can't miss</p>
+            </div>
+            <div class="deals-grid" id="dealsGrid">
+                <!-- Deals will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="experience" id="experience">
+        <div class="container">
+            <div class="section-header">
+                <h2>The AeroVista Experience</h2>
+                <p>Inspired by the efficiency of IndiGo and the hospitality of Qatar Airways</p>
+            </div>
+            <div class="experience-grid">
+                <article class="experience-card">
+                    <span class="experience-icon"><i class="fas fa-chair"></i></span>
+                    <h3>Economy Smart</h3>
+                    <p>Streamlined boarding, ergonomic Recaro seating, and 20% more overhead stowage—delivering IndiGo-style efficiency with premium finishes.</p>
+                    <ul>
+                        <li>Priority self bag-drop at all domestic hubs</li>
+                        <li>Complimentary 6E Bites-inspired menu on flights under 3 hours</li>
+                        <li>USB-C power and fast Wi-Fi messaging onboard</li>
+                    </ul>
+                </article>
+                <article class="experience-card">
+                    <span class="experience-icon"><i class="fas fa-couch"></i></span>
+                    <h3>Business Premier Suites</h3>
+                    <p>A private suite experience inspired by Qatar Airways’ Qsuite—fully flat beds, closing privacy doors, and customizable ambient lighting.</p>
+                    <ul>
+                        <li>Direct aisle access in every configuration</li>
+                        <li>Duo Suite mode for couples or colleagues</li>
+                        <li>Seasonal tasting menus curated with Michelin chefs</li>
+                    </ul>
+                </article>
+                <article class="experience-card">
+                    <span class="experience-icon"><i class="fas fa-utensils"></i></span>
+                    <h3>Culinary Studio</h3>
+                    <p>Multi-course dining inspired by regional flavours—crafted by our SkyCellars sommeliers and wellness partners.</p>
+                    <ul>
+                        <li>Pre-order signature meals up to 12 hours before departure</li>
+                        <li>Cold-pressed juices and barista coffee in every cabin</li>
+                        <li>Chef-on-call in Ultra Long Haul sectors</li>
+                    </ul>
+                </article>
+                <article class="experience-card">
+                    <span class="experience-icon"><i class="fas fa-spa"></i></span>
+                    <h3>Wellness & Connectivity</h3>
+                    <p>Arrive refreshed with circadian lighting, guided meditation, and personal concierge messaging available 24/7.</p>
+                    <ul>
+                        <li>Doha & Singapore lounges with nap pods and spa suites</li>
+                        <li>Complimentary roaming SIM and inflight Wi-Fi for loyalty elites</li>
+                        <li>Real-time rebooking via AeroVista app if plans change</li>
+                    </ul>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Network & Partnerships -->
+    <section class="network">
+        <div class="container">
+            <div class="network-header">
+                <div>
+                    <h2>Global Network & Partnerships</h2>
+                    <p>500+ destinations across 70 countries, powered by strategic collaborations and interline agreements.</p>
+                </div>
+                <a href="help-center.html" class="btn-outline">See travel advisories</a>
+            </div>
+            <div class="network-content">
+                <div class="network-map">
+                    <img src="https://images.unsplash.com/photo-1525610553991-2bede1a236e2?w=1200" alt="Global network map">
+                    <div class="network-overlay">
+                        <span><i class="fas fa-globe"></i> 4 global mega-hubs</span>
+                        <span><i class="fas fa-handshake"></i> 50 alliance partners</span>
+                        <span><i class="fas fa-clock"></i> 87% on-time performance (rolling 12 months)</span>
+                    </div>
+                </div>
+                <div class="network-details">
+                    <div class="network-card">
+                        <h3>Strategic Hubs</h3>
+                        <p>Doha, Singapore, Bengaluru, and Munich anchor a network designed for 90-minute average connections.</p>
+                        <ul>
+                            <li>Dedicated AeroVista transfer concierges</li>
+                            <li>Hybrid domestic + international arrival flows</li>
+                            <li>Automated visa-on-arrival for select nationalities</li>
+                        </ul>
+                    </div>
+                    <div class="network-card">
+                        <h3>Partner Spotlight</h3>
+                        <p>Seamless through-check with leading carriers—mirroring IndiGo’s expansive domestic reach and Qatar Airways’ global alliances.</p>
+                        <div class="partner-tags">
+                            <span>SkyBridge Cargo</span>
+                            <span>Oneworld Connect</span>
+                            <span>6E Interline</span>
+                            <span>Gulf Connect</span>
+                        </div>
+                        <p>Earn and redeem SkyLuxe points across 18 partner airlines and 40 luxury hotel brands.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Loyalty Programme -->
+    <section class="loyalty" id="loyalty">
+        <div class="container">
+            <div class="loyalty-content">
+                <div class="loyalty-text">
+                    <h2>SkyLuxe Recognition</h2>
+                    <p>Join our four-tier loyalty programme featuring IndiGo’s simplicity and Qatar Airways’ curated luxury.</p>
+                    <ul>
+                        <li><strong>Silver:</strong> Fast track boarding, 5 kg additional baggage, lounge access vouchers.</li>
+                        <li><strong>Gold:</strong> Dedicated concierge, complimentary upgrades twice a year, 15% SkyMall savings.</li>
+                        <li><strong>Platinum:</strong> Chauffeur drive in 35 cities, spa access, guaranteed Business Premier seat 24h before departure.</li>
+                        <li><strong>Black:</strong> Invitation-only tier with private suite check-in and bespoke journeys.</li>
+                    </ul>
+                    <a href="signup.html" class="btn-primary">Enroll in SkyLuxe</a>
+                </div>
+                <div class="loyalty-card">
+                    <div class="loyalty-badge">
+                        <span>SkyLuxe</span>
+                        <small>Elite member since 2025</small>
+                    </div>
+                    <div class="loyalty-metrics">
+                        <div>
+                            <span>65K</span>
+                            <small>status points</small>
+                        </div>
+                        <div>
+                            <span>12</span>
+                            <small>upgrades</small>
+                        </div>
+                        <div>
+                            <span>4</span>
+                            <small>partner stays</small>
+                        </div>
+                    </div>
+                    <p>Track your elite progress, unlock milestone gifts, and redeem on flights, hotels, or curated experiences.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>About AeroVista</h2>
+                    <p>AeroVista Airlines is a leading flight booking platform that connects millions of travelers to their dream destinations. With over 10 years of experience, we've built a reputation for reliability, excellent customer service, and unbeatable prices.</p>
+                    <p>Our mission is to make air travel accessible, affordable, and enjoyable for everyone. We partner with major airlines worldwide to bring you the best flight options and exclusive deals.</p>
+                    <div class="stats">
+                        <div class="stat-item">
+                            <h3>10M+</h3>
+                            <p>Happy Customers</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3>500+</h3>
+                            <p>Destinations</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3>50+</h3>
+                            <p>Airlines Partners</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <div class="image-placeholder">
+                        <svg class="about-logo" viewBox="0 0 200 180" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <defs>
+                                <linearGradient id="aboutLogoFill" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#e0f2ff" />
+                                    <stop offset="50%" stop-color="#dbeafe" />
+                                    <stop offset="100%" stop-color="#ede9fe" />
+                                </linearGradient>
+                                <linearGradient id="aboutLogoStroke" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#3b82f6" />
+                                    <stop offset="50%" stop-color="#8b5cf6" />
+                                    <stop offset="100%" stop-color="#ec4899" />
+                                </linearGradient>
+                            </defs>
+                            <g fill="url(#aboutLogoFill)" stroke="url(#aboutLogoStroke)" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+                                <polygon points="100 6 115 30 100 44 85 30" />
+                                <polygon points="88 32 112 32 124 74 108 112 92 112 76 74" />
+                                <polygon points="92 112 108 112 118 140 100 170 82 140" />
+                                <polygon points="10 46 84 32 66 68 16 72" />
+                                <polygon points="190 46 116 32 134 68 184 72" />
+                                <polygon points="66 68 84 38 92 68 74 96" />
+                                <polygon points="134 68 116 38 108 68 126 96" />
+                                <polygon points="50 86 64 64 70 92 56 108" />
+                                <polygon points="150 86 136 64 130 92 144 108" />
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>Get in Touch</h2>
+                <p>We're here to help you with any questions</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Phone</h4>
+                            <p>+1 (555) 123-4567</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>support@AeroVistaAirlines.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Address</h4>
+                            <p>123 Aviation Blvd, Sky City, SC 12345</p>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <input type="text" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" placeholder="Subject" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Your Message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="logo">
+                        <svg class="logo-icon" viewBox="0 0 200 180" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <defs>
+                                <linearGradient id="footerLogoFill" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#ffffff" />
+                                    <stop offset="50%" stop-color="#e0e7ff" />
+                                    <stop offset="100%" stop-color="#c7d2fe" />
+                                </linearGradient>
+                                <linearGradient id="footerLogoStroke" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#60a5fa" />
+                                    <stop offset="50%" stop-color="#8b5cf6" />
+                                    <stop offset="100%" stop-color="#ec4899" />
+                                </linearGradient>
+                            </defs>
+                            <g fill="url(#footerLogoFill)" stroke="url(#footerLogoStroke)" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+                                <polygon points="100 6 115 30 100 44 85 30" />
+                                <polygon points="88 32 112 32 124 74 108 112 92 112 76 74" />
+                                <polygon points="92 112 108 112 118 140 100 170 82 140" />
+                                <polygon points="10 46 84 32 66 68 16 72" />
+                                <polygon points="190 46 116 32 134 68 184 72" />
+                                <polygon points="66 68 84 38 92 68 74 96" />
+                                <polygon points="134 68 116 38 108 68 126 96" />
+                                <polygon points="50 86 64 64 70 92 56 108" />
+                                <polygon points="150 86 136 64 130 92 144 108" />
+                            </g>
+                        </svg>
+                        <div class="logo-text-container">
+                            <span class="logo-name">AeroVista</span>
+                        </div>
+                    </div>
+                    <p>Your trusted partner for all your travel needs. Book with confidence and fly with ease.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#flights">Flights</a></li>
+                        <li><a href="#deals">Deals</a></li>
+                        <li><a href="#about">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="help-center.html">Help Center</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="cancellation.html">Cancellation</a></li>
+                        <li><a href="#contact">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Newsletter</h4>
+                    <p>Subscribe to get special offers and travel tips</p>
+                    <form class="newsletter-form" id="newsletterForm">
+                        <input type="email" placeholder="Your email" required>
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 AeroVista Airlines. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="./auth.js"></script>
+    <script src="./script.js"></script>
+</body>
+</html>
+

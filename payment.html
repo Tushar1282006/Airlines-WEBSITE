@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Payment | AeroVista Airlines</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="./payment.css">
+</head>
+<body class="payment-page">
+    <header class="payment-header">
+        <a href="index.html" class="brand-link">
+            <svg class="brand-logo" viewBox="0 0 200 180" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <defs>
+                    <linearGradient id="paymentLogoFill" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#e0f2ff" />
+                        <stop offset="50%" stop-color="#dbeafe" />
+                        <stop offset="100%" stop-color="#ede9fe" />
+                    </linearGradient>
+                    <linearGradient id="paymentLogoStroke" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#3b82f6" />
+                        <stop offset="50%" stop-color="#8b5cf6" />
+                        <stop offset="100%" stop-color="#ec4899" />
+                    </linearGradient>
+                </defs>
+                <g fill="url(#paymentLogoFill)" stroke="url(#paymentLogoStroke)" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+                    <polygon points="100 6 115 30 100 44 85 30" />
+                    <polygon points="88 32 112 32 124 74 108 112 92 112 76 74" />
+                    <polygon points="92 112 108 112 118 140 100 170 82 140" />
+                    <polygon points="10 46 84 32 66 68 16 72" />
+                    <polygon points="190 46 116 32 134 68 184 72" />
+                    <polygon points="66 68 84 38 92 68 74 96" />
+                    <polygon points="134 68 116 38 108 68 126 96" />
+                    <polygon points="50 86 64 64 70 92 56 108" />
+                    <polygon points="150 86 136 64 130 92 144 108" />
+                </g>
+            </svg>
+            <div class="brand-text">
+                <span class="brand-name">AeroVista Airlines</span>
+                <span class="brand-slogan">Secure Checkout</span>
+            </div>
+        </a>
+        <a href="index.html#home" class="back-link"><i class="fas fa-arrow-left"></i> Back to search</a>
+    </header>
+
+    <main class="payment-content">
+        <section class="payment-card" id="paymentContainer">
+            <div class="payment-layout">
+                <aside class="summary-panel" id="summaryPanel">
+                    <h2>Flight Summary</h2>
+                    <div class="summary-body" id="flightSummary">
+                        <p class="empty-summary">
+                            No flight selected. <a href="index.html#home">Return to select a flight.</a>
+                        </p>
+                    </div>
+                </aside>
+                <section class="form-panel">
+                    <h2>Traveler & Payment Details</h2>
+                    <p class="form-subtitle">All transactions are encrypted and secured.</p>
+                    <form id="paymentForm" novalidate>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="fullName">Full name</label>
+                                <input type="text" id="fullName" name="fullName" placeholder="Jane Doe" autocomplete="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email address</label>
+                                <input type="email" id="email" name="email" placeholder="you@example.com" autocomplete="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone number</label>
+                                <input type="tel" id="phone" name="phone" placeholder="+1 555 123 4567" autocomplete="tel" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="cardNumber">Card number</label>
+                                <div class="card-input">
+                                    <input type="text" id="cardNumber" name="cardNumber" placeholder="1234 5678 9012 3456" inputmode="numeric" maxlength="19" required>
+                                    <span class="card-icon"><i class="fas fa-credit-card"></i></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="expiry">Expiry date (MM/YY)</label>
+                                <input type="text" id="expiry" name="expiry" placeholder="09/27" inputmode="numeric" maxlength="5" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="cvv">CVV</label>
+                                <input type="password" id="cvv" name="cvv" placeholder="123" inputmode="numeric" maxlength="4" required>
+                            </div>
+                            <div class="form-group full-width">
+                                <label for="billingAddress">Billing address</label>
+                                <input type="text" id="billingAddress" name="billingAddress" placeholder="123 Skyway Ave, Suite 500" autocomplete="street-address">
+                            </div>
+                            <div class="form-group full-width">
+                                <label for="notes">Special requests (optional)</label>
+                                <textarea id="notes" name="notes" rows="3" placeholder="Let us know if you have any special assistance requests."></textarea>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <div class="secure-note"><i class="fas fa-lock"></i> Payments are processed with enterprise-grade encryption.</div>
+                            <button type="submit" class="btn-pay" id="payNowBtn">
+                                <span class="btn-label">Complete booking</span>
+                                <span class="btn-price" id="payableAmount">₹0</span>
+                            </button>
+                        </div>
+                        <div class="form-message" id="formMessage" role="alert"></div>
+                    </form>
+                </section>
+            </div>
+        </section>
+
+        <section class="payment-success" id="successPanel" hidden>
+            <div class="success-icon"><i class="fas fa-check"></i></div>
+            <h2>Payment Successful!</h2>
+            <p>Your flight has been booked. A confirmation email with your itinerary has been sent.</p>
+            <div class="success-actions">
+                <a href="index.html#home" class="btn-primary">Plan another trip</a>
+                <button type="button" class="btn-secondary" id="viewReceiptBtn">Download receipt</button>
+            </div>
+        </section>
+    </main>
+
+    <script src="./payment.js"></script>
+</body>
+</html>
+
